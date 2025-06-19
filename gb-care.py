@@ -304,14 +304,16 @@ else:
 
 # 3단계: 일반 정보 입력
 정부24등록 = st.radio("정부24에 등록되어 있습니까?", ['예', '아니오'])
-가구 = st.text_input("가구")
-나이 = st.number_input("나이", min_value=0, max_value=120, step=1)
-접수기관명 = st.text_input("접수기관명")
-서비스명 = st.text_input("서비스명")
-지원대상 = st.text_area("지원대상")
-지원내용 = st.text_area("지원내용")
-문의처 = st.text_input("문의처")
-온라인URL = st.text_input("온라인 신청 사이트 URL")
+
+가구 = st.text_input("가구", help="해당 서비스의 가구 구분을 입력하세요 (예: 1인가구, 다자녀가구 등)")
+나이 = st.number_input("나이", min_value=0, max_value=120, step=1, help="서비스 대상자의 연령을 입력하세요.")
+접수기관명 = st.text_input("접수기관명", help="공고를 담당하는 접수기관명을 입력하세요.")
+서비스명 = st.text_input("서비스명", help="지원 서비스의 이름을 입력하세요.")
+지원대상 = st.text_area("지원대상", help="지원대상에 해당하는 구체적인 인원, 조건을 입력하세요.")
+지원내용 = st.text_area("지원내용", help="지원하는 내용(금액, 물품, 서비스 등)을 상세히 입력하세요.")
+문의처 = st.text_input("문의처", help="담당 부서 연락처 또는 이름을 입력하세요.")
+온라인URL = st.text_input("온라인 신청 사이트 URL", help="온라인으로 신청 가능한 URL이 있다면 입력하세요.")
+
 
 # 제출 버튼
 if st.button("제출하기"):
