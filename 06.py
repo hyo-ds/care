@@ -2,12 +2,16 @@ import streamlit as st
 import pandas as pd
 import datetime
 import gspread
-from oauth2client.service_account import ServiceAccountCredentials
+import json
+from google.oauth2.service_account import Credentials
 
-# ✅ Google Sheet 저장 함수
 def save_to_google_sheet(data):
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+    scope = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
+    
+    # ✅ Streamlit secrets 에서 credentials 가져오기
+    credentials_info = json.loads(st.secrets["google"])
+    creds = Credentials.from_service_account_info(credentials_info, scopes=scope)
+    
     client = gspread.authorize(creds)
     spreadsheet = client.open_by_url("https://docs.google.com/spreadsheets/d/169duC7FE_lXWBvTbwg6DHDF5078MXpJWOCzQij4Ls8w/edit")
     worksheet = spreadsheet.sheet1
@@ -21,12 +25,6 @@ def save_to_google_sheet(data):
     ]
     worksheet.append_row(row)
 
-# ✅ 전체 저장 함수
-
-def save_data(data):
-    save_to_google_sheet(data)
-
-# 🎯 예시 폼 구성 (간단 샘플)
 st.title("경상북도 돌봄(보듬)사업 공고 설문조사")
 
 st.markdown("##### 📌 작성자 정보")
@@ -66,5 +64,5 @@ if st.button("제출하기"):
         '온라인URL': 온라인URL
     }
 
-    save_data(data)
+    save_to_google_sheet(data)
     st.success("성공적으로 Google Sheet에 저장되었습니다!")
