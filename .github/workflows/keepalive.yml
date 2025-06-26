@@ -14,3 +14,4 @@ jobs:
 
       - name: Ping care-sigun app
         run: curl -s https://care-sigun.streamlit.app > /dev/null
+
