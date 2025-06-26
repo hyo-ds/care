@@ -1,0 +1,15 @@
+name: Keep Streamlit Apps Alive
+
+on:
+  schedule:
+    - cron: '0 */12 * * *'  # 매 12시간마다 실행 (KST 기준 9시, 21시)
+
+jobs:
+  ping-apps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping care-gb app
+        run: curl -s https://care-gb.streamlit.app > /dev/null
+
+      - name: Ping care-sigun app
+        run: curl -s https://care-sigun.streamlit.app > /dev/null
