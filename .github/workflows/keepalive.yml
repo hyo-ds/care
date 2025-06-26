@@ -3,6 +3,7 @@ name: Keep Streamlit Apps Alive
 on:
   schedule:
     - cron: '0 */12 * * *'  # 매 12시간마다 실행 (KST 기준 9시, 21시)
+   workflow_dispatch:   # ✅ 이 줄 추가! 수동 실행 가능
 
 jobs:
   ping-apps:
