@@ -13,5 +13,5 @@ jobs:
         run: curl -s https://gb-care.streamlit.app > /dev/null
 
       - name: Ping care-sigun app
-        run: curl -s https://sigun-care.streamlit.app > /dev/null
+        run: curl -s https://gb-sigun-care.streamlit.app > /dev/null
 
