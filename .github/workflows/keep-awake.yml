@@ -10,9 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Make empty commit
-  run: |
-    git config user.name "GitHub Action"
-    git config user.email "action@github.com"
-    git commit --allow-empty -m "keep awake"
-    git push
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "action@github.com"
+          git commit --allow-empty -m "keep awake"
+          git push
+
