@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping care-gb app
-        run: curl -s https://gb-care.streamlit.app > /dev/null
+        run: curl -A "Mozilla/5.0" -s https://gb-care.streamlit.app > /dev/null
 
       - name: Ping care-sigun app
-        run: curl -s https://gb-sigun-care.streamlit.app > /dev/null
+        run: curl -A "Mozilla/5.0" -s https://gb-sigun-care.streamlit.app > /dev/null
 
